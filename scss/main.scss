@@ -2,210 +2,409 @@
 @import "reset";
 @import "fonts";
 @import "mixin";
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600,700);
 
 body {
-	font-family: 'open_sans';
-	font-weight: light;
-	font-size: 12px;
-}
-.album-list{
-	display: flex;
-	// border: 2px solid #c2c2c2;
-	margin: auto;
-	flex-direction: column;
-
+  background: black;
+  font-family: 'Raleway';
+  font-size: 18px;
 }
 
-.border1lines {
-   		
-   		margin-bottom: 2rem;
- }
-
-.albumbrah {
-	border: 1px solid #c2c2c2;
-}
-// .albumbrah{
-// 	background-image: url(../assets/images/search-tags.svg);
-// 	display: flex;
-// 	height:360vh;
-// 	width: 300vh;
-// 	text-align: center;
-// 	margin: auto;
-// }
-
-#clicktodis {
-	width: 65%;
-	margin:auto;
+.page {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
 }
 
-.logo {
-	width: 60%;
-	//margin: auto;
-
+.h2form1{
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
 }
 
-#icon{
-	width: 10%;
-	margin: auto;
+.checkinbutton{
+  color: white;
+  background-color: red;
 }
 
-.search {
-	background-image: url(../assets/images/pattern.png);
-	padding: 2rem;
+.submitReport{
+  color: white;
+  background-color: red;
 }
 
-.itunes-widget{
-	text-align: center;
-	margin: 2rem;
-}
-
-li img{
-	width: 100%;
-	// border: 1px solid #c2c2c2;
-}
-
-.copyright {
-	text-align: center;
-	font-family: 'open_sans';
-	font-weight: lighter;
-	font-size: .5rem;
-	margin: 25px 0 20px 0;
-	border-top: 1px solid #c2c2c2;
-}
-
-// .rounded{
-// 	border-radius: 50%;
-// }
-
-.container {
+.page1{
+  
+  background:#f00;
   display:flex;
-  flex-display: row;
-  justify-content:space-between;
-}
-
-.item1 {
-  
-  width:60px; height:60px;
-  
-  background-size:cover;
-  border-radius: 50%;
-  overflow:hidden;
-  margin:1rem;
-}
-
-.item2 {
-  // display:flex;
   flex-direction:column;
+  align-items:center;
   justify-content:center;
-  text-align:right;
-  padding-right:1rem;
+  height:100vh;
 }
 
-.username {
-	margin-top: 1rem;
-	font-family: 'open_sans';
-	font-size: 1.2rem;
+
+.parent1{
+  display:flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
 }
 
-// .usernamelikescomments {
-// 	display: flex;
+.parent1 input {
+  
+  padding: 15px;
 
+}
+
+.parent1 select {
+  
+  padding: 15px;
+
+}
+
+.custom-select {
+        height:2rem;
+        background:white;
+
+        select {
+            font-size:1rem;
+            line-height:2rem;
+            padding-left:0.5rem;
+            font-family: 'Raleway';
+        }
+
+        select.placeholder {
+            color:#ed4343;
+        }
+    }
+
+.occupationSelect{
+      height: 2rem;
+    background-color: white;
+    line-height: 2rem;
+    width: 84.9%;
+}
+
+.occupationSelect select{
+    font-size: 1rem;
+    line-height: 2rem;
+    border: 1px solid transparent;
+    background-color: white;
+    outline: none;
+    width: 100%;
+}
+
+.index4button{
+  height:20px;
+  width:100px;
+  color: red;
+}
+
+
+
+// .bodyindex3{
+//   display: flex;
+//   flex-direction: column;
 // }
 
-// .inyofayce {
-//  display: flex;
-//  justify-content: space-between;
-//  flex-display: column;
+
+
+// .show-validation{
+//   transition: .5s linear all;
 // }
 
-#loader {
-	text-align: center;
 
+
+@keyframes border-pulse {
+  0%   { 
+  box-shadow:
+    0 0 0 1rem rgba(255, 255, 255, 0.1),
+    0 0 0 2rem rgba(255, 255, 255, 0.15),
+    0 0 0 3rem rgba(255, 255, 255, 0.2);
+  }
+  50%  {       
+  box-shadow:
+    0 0 0 1.25rem rgba(255, 255, 255, 0.1),
+    0 0 0 2.75rem rgba(255, 255, 255, 0.1),
+    0 0 0 4rem rgba(255, 255, 255, 0);
+  }
+ 75%  {       
+  box-shadow:
+    0 0 0 1.50rem rgba(255, 255, 255, 0.1),
+    0 0 0 3rem rgba(255, 255, 255, 0),
+    0 0 0 5rem rgba(255, 255, 255, 0);
+  }
+  100% { 
+  box-shadow:
+    0 0 0 1.75rem rgba(255, 255, 255, 0),
+    0 0 0 3.75rem rgba(255, 255, 255, 0),
+    0 0 0 6rem rgba(255, 255, 255, 0);
+   }
+}
+@keyframes invalid-input {
+  0% {
+    box-shadow:
+      0 0 0 0rem rgba(237,67,67, 1);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0.5rem rgba(237,67,67, 0.2);
+  }
+}
+/* Have to set height explicity on ui-view 
+to prevent collapsing during animation*/
+.ui-view-container {
+  position:absolute; 
+  width:100vw;
+  height:100vh;
+}
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  -webkit-transition:all .5s ease-in-out;
+    -moz-transition:all .5s ease-in-out;
+    -o-transition:all .5s ease-in-out;
+    transition:all .5s ease-in-out;
+}
+[ui-view].ng-enter {
+  .welcome & {
+    opacity: 0; 
+  }
+  .register & {
+    opacity: 0;
+    -webkit-transform:translate3d(0, -2000px, 0);
+    -moz-transform:translate3d(0, -2000px, 0);
+    transform:translate3d(0, -2000px, 0);
+  }
+  .encounter & {
+    -webkit-transform:translate3d(200px, 0, 0);
+    -moz-transform:translate3d(200px, 0, 0);
+    transform:translate3d(200px, 0, 0);
+  }
+  .report & {
+    opacity:0;
+    -webkit-transform:translate3d(-200px, 0, 0);
+    -moz-transform:translate3d(-200px, 0, 0);
+    transform:translate3d(-200px, 0, 0);
+  }
+}
+[ui-view].ng-enter-active {
+  .welcome & {
+    opacity: 1; 
+  }
+  
+  .register & {
+    opacity: 1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+  .encounter & {
+    -opacity: 1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+  .report & {
+    opacity: 1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+}
+[ui-view].ng-leave {
+  .welcome & {
+    opacity: 1; 
+  }
+  
+  .register & {
+    opacity: 1; 
+    -webkit-transform:scale3d(1,1,1);
+    -moz-transform:scale3d(1,1,1);
+    transform:scale3d(1,1,1);
+  }
+  .encounter & {
+    opacity:1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+  .report & {
+    opacity:1;
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+ 
+}
+[ui-view].ng-leave-active {
+  .welcome & {
+    opacity: 0;
+  }
+  .register & {
+    opacity: 0;
+    -webkit-transform:scale3d(0,0,0);
+    -moz-transform:scale3d(0,0,0);
+    transform:scale3d(0,0,0);
+  }
+  .encounter & {
+    opacity:0;
+    -webkit-transform:translate3d(-200px, 0, 0);
+    -moz-transform:translate3d(-200px, 0, 0);
+    transform:translate3d(-200px, 0, 0);
+  }
+  .report & {
+    opacity:0;
+    -webkit-transform:translate3d(200px, 0, 0);
+    -moz-transform:translate3d(200px, 0, 0);
+    transform:translate3d(200px, 0, 0);
+  }
 }
 
-#loader img{
-	width: 200px;
+.show-validation {
+  transition: .5s linear all;
 }
 
-.loadmore {
-	height: 35px;
-	width: 200px;
-	font-family: 'open_sans';
-	font-size:1.3rem;
-	text-align: center;
-	margin: 0 auto;
-	color: white;
-	background-color: red;
+.show-validation{
+  input, select, textarea {
+    &.ng-invalid{
+      border-radius: 0;
+      animation: invalid-input 0.5s infinite;
+
+    }
+  }
 }
 
-.loadmorebutton {
-	text-align: center;
-	margin-top: 2rem;
+.reportEncounter{
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Raleway';
+}
+
+.border-pulse {
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:white;
+  animation: border-pulse 3s infinite ease-in-out;
 }
 
 body{
-  font-size: 12px;
-  color: #2e2e2e;
+  background: red;
 
-  @include bp(tablet) {
-  	// background-color: green;
-
-  	.album-list {
-  		display: flex;
-  		width: 100%;
-  		flex-wrap: wrap;
-  		flex-direction: row;
-  		height: auto;
-  		// justify-content:space-between;
-  		
-  	}
-  	.border1lines {
-  		width: 31%;
-  		border: 1px solid #dbdbdb;
-   		margin: auto;
-   		margin-bottom: 2rem;
-  		
-  		// flex-direction: row;
-  	}
-
-  	.username {
-	
-	font-size: .7rem;
-     }
-
-
-
-  } 
-  @include bp(desktop) {
-  	// background-color: red;
-
-   	.album-list {
-  		
-   		width: 100%;
-   		flex-wrap: wrap;
-   		flex-direction: row;
-  		
-  		
-   	}
-   	.border1lines {
-   		width: 24%;
-   		border: 1px solid #dbdbdb;
-   		margin: auto;
-   		margin-bottom: 2rem;
 }
 
-	.username {
-	
-	font-size: 1rem;
-     }
-     // background-color: green;
-   }
+.welcomeToMars{
+  margin-top: 15vh;
 }
 
-// .backgroundpic {
-// background-image: url(../assets/images/pattern.png);
-// ​}
+.wrappingdiv1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-// .backgroundpic{
-// 	background-image: url(../assets/images/pattern.png);
-// }
+}
+
+.wrappingdiv1 header{
+  height: 40vh;
+}
+
+.checkInNow {
+  margin: 20vh;
+}
+
+
+
+.checkInNow, .welcomeToMars{
+  color: white;
+}
+
+.welcomeToMars{
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.checkInNow{
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.wrappingdiv2 {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  height: 105vh;
+}
+
+.wrappingdiv2 form{
+  margin-top: 5rem;
+}
+
+.checkinbutton {
+  margin-top: 5rem;
+  display: flex;
+  width: 80%;
+  height: 8vh;
+  color: #ED4343;
+ justify-content:center;
+ margin: 0 auto;
+ margin-top: 5rem;
+ font-family: 'Raleway';
+ font-size: 1.5rem;
+}
+
+.wrappingdiv4 ul li{
+  background-color: white;
+}
+
+.buttonDiv {
+  background-color: black;
+  height: 30vh;
+}
+
+.index4button {
+  
+  
+  height: 3rem;
+  background-color: #ED4343;
+  margin: 0 auto;
+  width: 80%;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+
+.wrappingdiv3 {
+  background-color: black;
+  color: white;
+  height: 101vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.reportContainer{
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+
+.submitReport{
+  width: 75vh;
+  height:8vh;
+  margin-top: 3rem;
+  font-size: 2rem;
+}
+
+.reportEncounter {
+  margin-top: 2rem;
+}
+
+
+

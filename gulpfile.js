@@ -15,5 +15,5 @@ gulp.task('browser-sync', function() {
         }
     });
     gulp.watch('./scss/**/*.scss', ['scss']);
-    gulp.watch(["index.html", "js/*.js", "css/*.css"]).on('change', browserSync.reload);
+    gulp.watch(["index.html", "index2.html","index3.html","index4.html", "js/*.js", "css/*.css"]).on('change', browserSync.reload);
 });

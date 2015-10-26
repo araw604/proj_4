@@ -1,92 +1,182 @@
-(function (){
+angular.module('mayFormApp', ['ui.router', 'ngAnimate', 'ngTouch', 'ngCookies'])
+    
+    .run(function($rootScope){
+      $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      $rootScope.stateName =toState.name;
 
-   var app = angular.module("project3",[]);
+   })
+      // .run(function($rootScope){
+      //   $rootScope.$on('$stateChangeStart', function(event, toStart, toMove, toEnd, toCancel){
+      // })
 
-   app.controller("InstaCtrl", ['scope', '$http', function($scope, $http) {
-       $scope.loading = false;
-       $scope.photos =[];
-      $scope.getPhotos= function(){
-        
-
-      };
-
-  }]);
-
-})();
+    })
 
 
-// $(function() {
+    .config(['$stateProvider',
+             '$urlRouterProvider',
+             '$locationProvider',
+             function($stateProvider,
+                      $urlRouterProvider,
+                      $locationProvider) {
+                $locationProvider.html5Mode({
+                enable: true,
+                requireBase: false,
+                rewriteLinks: false
+              });
 
-//    // set some initial variables
-//    var albumData,
-//        albumItems,
-//        artistName,
-//        itunesUrl,
-//        $albumList = $('.album-list');
+              $stateProvider
+                  .state('welcome', {
+                    url: '',
 
-//    // when the form is submitted
-//    $('#album-search').on('submit', function(event) {
-//     $('#clicktodis').hide();
-//       event.preventDefault();
-//       $('#loader').show();
-//       $('.loadmore').show();
-//       // reset all the things
-//       $albumList.empty();
-//       albumData, albumItems = '',
+                    templateUrl: 'index1.html',
+                    
+                    controller: ['$cookies', '$state', '$scope', function($cookies, $state, $scope){
+                    $scope.swipeLeft = function() {
+                      $state.go('register');
+                    }
 
-//       // get the search string
-//       artistName = $('#artist-name').val().replace(/ /g, '+'),
-//       itunesUrl = 'https://api.instagram.com/v1/tags/'+artistName+'/media/recent?count=12&client_id=90787d64fcb1442e941d0420ab7a0c9f';
+                    $cookies.putObject('mars_user', undefined);
+                    }]
+                  })
 
-//       // make the call to the endpoint
-//       $.ajax({
-//          method: 'GET',
-//          url: itunesUrl,
-//          dataType: 'jsonp'
-//       })
-//       // if it works...
-//       .done(function(results) {
-//          albumData = results.data;
-
-//          if ( albumData.length !== 0 ) {
-            $.each(albumData, function(key, value) {
-               // albumItems += '<span class="border1lines">';
-               albumItems += '<li class="border1lines">';
-               albumItems += '<img src="' + value.images.standard_resolution.url + '" />';
-               // albumItems += '<br>';
-               // albumItems += /*'<p>' + */value.caption.from.username /*+ '</p>'*/;
-               albumItems += '<div class="container">';
-               albumItems += '<div class="item1">';
-               albumItems += '<img class="rounded" src="' + value.caption.from.profile_picture + '" />';
-               albumItems += '</div>';
-               albumItems += '<div class="item2">';
-               albumItems += '<p class="username">' + value.caption.from.username + '</p>';
-               albumItems += '<p>';
-               albumItems += '<i class="fa fa-heart"></i> ' +value.likes.count+ ' ';
-               albumItems += '<i class="fa fa-comments"></i> ' +value.comments.count;
-               albumItems += '</p>';
-               
-               albumItems += '</div>';
-               albumItems += '</div>';
-               albumItems += '</div>';
-               albumItems += '</li>';
+                  // resolve:{
+                  //   user: ['$cookies',function($cookies){
+                  //     if($cookies.getObject('mars_user')){
+                  //       $state.go('encounter');
+                  //     }
+                  // }]
+                // }
 
 
-               // albumItems += '</span>';
-//             });
-//          } else {
-//             albumItems += '<p style="margin-top: 18px;">Sorry, artist not found.</p>';
-//          }
+              $stateProvider
+                    .state('register', {
+                    url: '/register',
 
-//          $albumList.append(albumItems);
-//       })
-//       // and if it fails...
-//       .fail(function() {
-//          $albumList.append('<li>Sorry! There was a problem, please try again.</li>');
-//       })
+                    templateUrl: 'index2.html',
+                    controller: 'RegisterFormCtrl',
 
-//       .always(function() {
-//          $('#loader').hide();
-//       });
-//    });
-// });
+
+                  resolve:{
+                    user: ['$cookies',function($cookies){
+                      if($cookies.getObject('mars_user')){
+                        $state.go('encounter');
+                      }
+                  }]
+                }
+                  })
+
+
+                $stateProvider
+                  .state('encounter', {
+                    url: '/encounter',
+                   
+                    controller: ['$scope', '$http', function($scope, $http){
+                    var ENCOUNTERS_API_URL = 'https://red-wdp-api.herokuapp.com/api/mars/encounters';
+
+                        $http.get(ENCOUNTERS_API_URL).then(function(response){
+
+                         $scope.encounters = response.data.encounters;
+
+                 });
+                    
+                    }],
+
+                    templateUrl: 'index4.html'
+                  })
+
+                  $stateProvider
+                  .state('report', {
+                    url: '/report',
+
+                    templateUrl: 'index3.html',
+                    controller: 'ReportFormCtrl'
+                  })
+
+
+    }])
+
+
+   
+ 
+ .controller('RegisterFormCtrl', ['$scope','$state','$http', '$cookies', function($scope, $state, $http, $cookies){
+
+            $scope.showValidation = false;
+            var API_URL_GET_JOBS = "https://red-wdp-api.herokuapp.com/api/mars/jobs";
+            var API_URL_CREATE_COLONIST = "https://red-wdp-api.herokuapp.com/api/mars/colonists";
+            $scope.colonist={};
+
+            $http.get(API_URL_GET_JOBS).then(function(response){
+
+              $scope.jobs = response.data.jobs;
+
+          });
+
+    $scope.enter = function(e) {
+        e.preventDefault();
+
+        if ($scope.myForm.$invalid) {
+            $scope.showValidation = true;
+        } else{
+
+          //debugger;
+          
+            $http({
+              method: 'POST',
+              url: API_URL_CREATE_COLONIST,
+              data: {colonist: $scope.colonist }
+            }).then(function(response){
+
+          $cookies.putObject('mars_user', response.data.colonist);
+          $state.go('encounter');
+
+          //debugger;
+
+        })
+    }
+  }
+
+ }])
+
+   .controller('ReportFormCtrl', ['$scope', '$http', '$cookies', '$state', function($scope, $http, $cookies, $state){
+    
+            $scope.showValidation = false;
+
+            var API_URL_GET_ALIENS ="https://red-wdp-api.herokuapp.com/api/mars/aliens"
+            var ENCOUNTERS_API_URL = 'https://red-wdp-api.herokuapp.com/api/mars/encounters';
+
+            $scope.encounter = {date: '2015-10-24', colonist_id: $cookies.getObject('mars_user').id};
+
+            $http.get(API_URL_GET_ALIENS).then(function(response){
+
+              $scope.aliens = response.data.aliens;
+
+          });
+           
+
+     $scope.submitReport = function(e){
+       e.preventDefault();
+       
+       if ($scope.myForm.$invalid) {
+            $scope.showValidation = true;
+        } else{
+
+
+            $http({
+              method: 'POST',
+              url: ENCOUNTERS_API_URL,
+              data: {encounter: $scope.encounter}
+            }).then(function(response){
+
+         
+          $state.go('encounter');
+
+          //debugger;
+
+        })
+
+          
+        }
+
+     }
+   }])
+

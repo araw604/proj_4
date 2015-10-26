@@ -1,0 +1,50 @@
+
+	
+	<div class="wrappingdiv2">
+		<div>
+			<h2 class="h2form1">  Who Are you? </h2>
+		</div>
+
+		<header ng-controller="RegisterFormCtrl">
+
+			<form name="myForm" class="my-form" ng-class="{'show-validation' : showValidation}" ng-submit="enter($event)" novalidate>
+			
+			<div class="parent1">
+				
+				   <input name="name" type="text" ng-model="colonist.name" ng-maxlength="140" placeholder="Name" required/>
+		
+
+
+				
+				     <input name="age" type="number" placeholder="Age" min="1" ng-model="colonist.age" required/>
+
+				    
+					<div class="custom-select">
+						<select name="occupation" placeholder="Select Occupation" ng-model="colonist.job_id" required>
+							
+							 <option value=""> SelectOccupation</option>
+							<option value="{{ job.id }}" ng-repeat="job in jobs"> {{job.name}} </option>
+								
+						</select>
+					</div>
+				 
+				
+			</div>
+		
+			
+			<button class="checkinbutton" type="submit" ng-click="enter($event,myForm)"><a ui-sref="encounter">Check in</a></button>
+			
+			</form>
+
+		</header>
+			
+			
+	</div>
+
+		
+		
+		
+
+
+
+
