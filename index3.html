@@ -1,7 +1,8 @@
 
 	<div class="wrappingdiv3">
-	<h2 class="reportEncounter"> Report Encounter</h2>
+		<h2 class="reportEncounter"> Report Encounter</h2>
 		<p>Safety on Mars is your responsibility</p>
+		
 		<form class="myForm" name="myForm" ng-class="{'show-validation' : showValidation}" ng-submit="submitReport($event)" novalidate>
 		
 		<div class="reportContainer">
@@ -16,7 +17,7 @@
 		  					
 					</select>
 			</div>
-			<div>	
+			<div class="textareafl">	
 				<textarea name="actionTaken" placeholder="Action Taken" ng-model="encounter.action" rows="10" cols="80" required/></textarea>
 					
 			</div>

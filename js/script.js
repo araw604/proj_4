@@ -39,22 +39,12 @@ angular.module('mayFormApp', ['ui.router', 'ngAnimate', 'ngTouch', 'ngCookies'])
                     }]
                   })
 
-                  // resolve:{
-                  //   user: ['$cookies',function($cookies){
-                  //     if($cookies.getObject('mars_user')){
-                  //       $state.go('encounter');
-                  //     }
-                  // }]
-                // }
-
-
               $stateProvider
                     .state('register', {
                     url: '/register',
 
                     templateUrl: 'index2.html',
                     controller: 'RegisterFormCtrl',
-
 
                   resolve:{
                     user: ['$cookies',function($cookies){
@@ -70,12 +60,16 @@ angular.module('mayFormApp', ['ui.router', 'ngAnimate', 'ngTouch', 'ngCookies'])
                   .state('encounter', {
                     url: '/encounter',
                    
-                    controller: ['$scope', '$http', function($scope, $http){
+                    controller: ['$scope', '$http', '$state', function($scope, $http, $state){
                     var ENCOUNTERS_API_URL = 'https://red-wdp-api.herokuapp.com/api/mars/encounters';
 
                         $http.get(ENCOUNTERS_API_URL).then(function(response){
 
                          $scope.encounters = response.data.encounters;
+
+                         $scope.swipeLeft = function() {
+                         $state.go('report');
+                    }
 
                  });
                     
