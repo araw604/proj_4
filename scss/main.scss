@@ -1,7 +1,6 @@
 
 @import "reset";
 @import "fonts";
-@import "mixin";
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600,700);
 
 body {
@@ -28,7 +27,10 @@ body {
   color: white;
   background-color: red;
 }
-
+.checkinbutton a{
+  text-decoration: none;
+  color: white;
+}
 .submitReport{
   color: white;
   background-color: red;
@@ -107,18 +109,11 @@ body {
   color: red;
 }
 
+.index4button a{
+  text-decoration: none;
+  color: white;
+}
 
-
-// .bodyindex3{
-//   display: flex;
-//   flex-direction: column;
-// }
-
-
-
-// .show-validation{
-//   transition: .5s linear all;
-// }
 
 
 
@@ -361,8 +356,27 @@ body{
  font-size: 1.5rem;
 }
 
+.alienEncounters, .seenAliens{
+  background-color: white;
+  text-align: center;
+}
+.alienEncounters{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.seenAliens{
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
 .wrappingdiv4 ul li{
   background-color: white;
+  
+}
+
+.scrollDiv {
+  height: 35rem;
+  overflow: scroll;
 }
 
 .buttonDiv {

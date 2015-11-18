@@ -1,11 +1,12 @@
 <div class="wrappingdiv4" ng-swipe-left="swipeLeft()">
-	
-
-	<ul>
-		<li ng-repeat="e in encounters"> {{e.date|date:'fullDate'}}-{{e.atype}} <br>{{e.action}}</li>
-							
-	</ul>
+	<div class="alienEncounters">Recent Encounters</div>
+	<div class="seenAliens">See an Alien? Report it!</div>
+	<section class="scrollDiv">	
+		<ul>
+			<li ng-repeat="e in encounters"> {{e.date|date:'fullDate'}}-{{e.atype}} <br>{{e.action}}</li>			
+		</ul>
+	</section>
 	<div class="buttonDiv">
-		<button class="index4button"><a ui-sref="report">Report Encounter   </button> </a>
+		<button class="index4button"><a ui-sref="report">Report Encounter </button> </a>
 	</div>
 </div>

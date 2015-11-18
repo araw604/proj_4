@@ -159,6 +159,10 @@ body {
   color: white;
   background-color: red; }
 
+.checkinbutton a {
+  text-decoration: none;
+  color: white; }
+
 .submitReport {
   color: white;
   background-color: red; }
@@ -216,6 +220,10 @@ body {
   height: 20px;
   width: 100px;
   color: red; }
+
+.index4button a {
+  text-decoration: none;
+  color: white; }
 
 @keyframes border-pulse {
   0% {
@@ -400,8 +408,24 @@ body {
   font-family: 'Raleway';
   font-size: 1.5rem; }
 
+.alienEncounters, .seenAliens {
+  background-color: white;
+  text-align: center; }
+
+.alienEncounters {
+  font-size: 2rem;
+  font-weight: bold; }
+
+.seenAliens {
+  font-weight: bold;
+  padding-bottom: 1rem; }
+
 .wrappingdiv4 ul li {
   background-color: white; }
+
+.scrollDiv {
+  height: 35rem;
+  overflow: scroll; }
 
 .buttonDiv {
   background-color: black;

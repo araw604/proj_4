@@ -5,10 +5,7 @@ angular.module('mayFormApp', ['ui.router', 'ngAnimate', 'ngTouch', 'ngCookies'])
       $rootScope.stateName =toState.name;
 
    })
-      // .run(function($rootScope){
-      //   $rootScope.$on('$stateChangeStart', function(event, toStart, toMove, toEnd, toCancel){
-      // })
-
+     
     })
 
 
@@ -112,7 +109,7 @@ angular.module('mayFormApp', ['ui.router', 'ngAnimate', 'ngTouch', 'ngCookies'])
             $scope.showValidation = true;
         } else{
 
-          //debugger;
+          
           
             $http({
               method: 'POST',
@@ -123,7 +120,7 @@ angular.module('mayFormApp', ['ui.router', 'ngAnimate', 'ngTouch', 'ngCookies'])
           $cookies.putObject('mars_user', response.data.colonist);
           $state.go('encounter');
 
-          //debugger;
+          
 
         })
     }
