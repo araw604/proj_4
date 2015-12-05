@@ -16,7 +16,7 @@ angular.module('mayFormApp', ['ui.router', 'ngAnimate', 'ngTouch', 'ngCookies'])
                       $urlRouterProvider,
                       $locationProvider) {
                 $locationProvider.html5Mode({
-                enable: true,
+                enable: false,
                 requireBase: false,
                 rewriteLinks: false
               });
